@@ -2,7 +2,7 @@
 name: asfa
 services:
   app:
-    image: spacecowboy72/asfa:latest
+    image: asfa
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
       - SPRING_PROFILES_ACTIVE=prod,api-docs
@@ -11,9 +11,6 @@ services:
       - SPRING_LIQUIBASE_URL=jdbc:postgresql://postgresql:5432/asfa
     ports:
       - 127.0.0.1:8080:8080
-    volumes:
-      - ./src:/app/src
-      - ./target:/app/target
     healthcheck:
       test:
         - CMD

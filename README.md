@@ -2,64 +2,6 @@
 
 This application was generated using JHipster 8.7.1, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v8.7.1](https://www.jhipster.tech/documentation-archive/v8.7.1).
 
-![Static Badge](https://img.shields.io/badge/Jhipster-v8.7.1-blue)
-![Static Badge](https://img.shields.io/docker/pulls/spacecowboy72/asfa)
-![Docker Image Version](https://img.shields.io/docker/v/spacecowboy72/asfa)
-![Docker Image Size](https://img.shields.io/docker/image-size/spacecowboy72/asfa)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=noobmaster122_asfa&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=noobmaster122_asfa)
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=noobmaster122_asfa&metric=bugs)](https://sonarcloud.io/summary/new_code?id=noobmaster122_asfa)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=noobmaster122_asfa&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=noobmaster122_asfa)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=noobmaster122_asfa&metric=coverage)](https://sonarcloud.io/summary/new_code?id=noobmaster122_asfa)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=noobmaster122_asfa&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=noobmaster122_asfa)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=noobmaster122_asfa&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=noobmaster122_asfa)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=noobmaster122_asfa&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=noobmaster122_asfa)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=noobmaster122_asfa&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=noobmaster122_asfa)
-
-## Branch Naming Conventions
-
-Follow these naming conventions for consistent branch management:
-
-- **Features**: `feature/short-description`
-
-  - Example: `feature/add-user-auth`
-
-- **Bug Fixes**: `bugfix/short-description`
-
-  - Example: `bugfix/fix-login-error`
-
-- **Hotfixes**: `hotfix/short-description`
-  - Example: `hotfix/critical-security-fix`
-
-**Best Practices**:
-
-- Use lowercase letters with words separated by dashes (`-`).
-- Keep names descriptive yet concise.
-- Include issue/ticket ID if applicable (e.g., `feature/1234-add-search`).
-
-### Commit Message Conventions
-
-Follow these conventions for clear and consistent commit messages:
-
-- **Structure**: `<type>: <short description>`
-
-  - Example: `feat: add user authentication`
-
-- **Types**:
-
-  - `feat`: New features (e.g., `feat: implement search functionality`)
-  - `fix`: Bug fixes (e.g., `fix: resolve login error`)
-  - `docs`: Documentation updates (e.g., `docs: update README`)
-  - `style`: Code formatting (e.g., `style: apply consistent indentation`)
-  - `refactor`: Code refactoring (e.g., `refactor: simplify API response`)
-  - `test`: Adding/updating tests (e.g., `test: add unit tests for service`)
-  - `chore`: Maintenance tasks (e.g., `chore: update dependencies`)
-
-- **Best Practices**:
-  - Keep messages concise and descriptive.
-  - Use present tense (e.g., `add`, not `added`).
-  - Limit the short description to 50 characters.
-  - Add a detailed body if necessary, separated by a blank line.
-
 ## Project Structure
 
 Node is required for generation and recommended for development. `package.json` is always generated for a better development experience with prettier, commit hooks, scripts and so on.
@@ -232,15 +174,6 @@ Unit tests are run by [Jest][]. They're located in [src/test/javascript/](src/te
 ./npmw test
 ```
 
-UI end-to-end tests are powered by [Cypress][]. They're located in [src/test/javascript/cypress](src/test/javascript/cypress)
-and can be run by starting Spring Boot in one terminal (`./mvnw spring-boot:run`) and running the tests (`./npmw run e2e`) in a second one.
-
-#### Lighthouse audits
-
-You can execute automated [Lighthouse audits](https://developers.google.com/web/tools/lighthouse/) with [cypress-audit](https://github.com/mfrachet/cypress-audit) by running `./npmw run e2e:cypress:audits`.
-You should only run the audits when your application is packaged with the production profile.
-The lighthouse report is created in `target/cypress/lhreport.html`
-
 ## Others
 
 ### Code quality using Sonar
@@ -335,7 +268,6 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 [Webpack]: https://webpack.github.io/
 [BrowserSync]: https://www.browsersync.io/
 [Jest]: https://facebook.github.io/jest/
-[Cypress]: https://www.cypress.io/
 [Leaflet]: https://leafletjs.com/
 [DefinitelyTyped]: https://definitelytyped.org/
 [Angular CLI]: https://cli.angular.io/

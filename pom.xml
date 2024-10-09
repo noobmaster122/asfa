@@ -22,8 +22,6 @@
             Build properties
             The spring-boot version should match the one managed by https://mvnrepository.com/artifact/tech.jhipster/jhipster-dependencies/${jhipster-dependencies.version}
         -->
-      <sonar.organization>noobmaster122</sonar.organization>
-      <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <maven.version>3.2.5</maven.version>
         <java.version>17</java.version>
         <node.version>v20.17.0</node.version>
@@ -48,8 +46,7 @@
         <jhipster-framework.version>8.7.1</jhipster-framework.version>
         <jib-maven-plugin.architecture>amd64</jib-maven-plugin.architecture>
         <jib-maven-plugin.image>eclipse-temurin:17-jre-focal</jib-maven-plugin.image>
-<!--      bug with newer versions, check thread: https://stackoverflow.com/questions/78573169/googlejib-is-stuck-at-80-percent-while-creating-docker-image-->
-        <jib-maven-plugin.version>3.3.2</jib-maven-plugin.version>
+        <jib-maven-plugin.version>3.4.3</jib-maven-plugin.version>
         <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
         <liquibase-plugin.password/>
         <liquibase-plugin.url/>
@@ -891,15 +888,6 @@
                     <optional>true</optional>
                 </dependency>
             </dependencies>
-        </profile>
-        <profile>
-            <id>e2e</id>
-            <properties>
-                <profile.e2e>,e2e</profile.e2e>
-            </properties>
-            <build>
-                <finalName>e2e</finalName>
-            </build>
         </profile>
         <profile>
             <!-- This is automatically activated when working in Eclipse -->

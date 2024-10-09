@@ -42,22 +42,11 @@ spring:
   # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
   liquibase:
     contexts: prod
-  #  mail:
-  #    host: localhost
-  #    port: 25
-  #    username:
-  #    password:
   mail:
-    host: smtp-mail.outlook.com
-    port: 587
-    username: ${{ secrets.ASFA_MAIL_USERNAME }}
-    password: ${{ secrets.ASFA_MAIL_PASSWORD }}
-    protocol: smtp
-    tls: true
-    properties.mail.smtp:
-      auth: true
-      starttls.enable: true
-      ssl.trust: smtp-mail.outlook.com
+    host: localhost
+    port: 25
+    username:
+    password:
   thymeleaf:
     cache: true
 
@@ -101,7 +90,7 @@ jhipster:
   security:
     remember-me:
       # security key (this key should be unique for your application, and kept secret)
-      key: 917feb9bf9eb07a39ca85aedcccdb7659b1669e9bee9e53703bb1febafc9b8e760803decf30b6b9928ab1895d08c06ba3251
+      key: 04908f95c292f68f0e01255ce5e1e86d75e7c04e57cda258811f0c5278a1d47aa08863a9e8663c6f2a9c7b85046be647e020
   mail: # specific JHipster mail property, for standard properties see MailProperties
     base-url: http://my-server-url-to-change # Modify according to your server's URL
   logging:
