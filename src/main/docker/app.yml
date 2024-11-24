@@ -11,6 +11,9 @@ services:
       - SPRING_LIQUIBASE_URL=jdbc:postgresql://postgresql:5432/asfa
     ports:
       - 127.0.0.1:8080:8080
+    volumes:
+      - ./src:/app/src
+      - ./target:/app/target
     healthcheck:
       test:
         - CMD
