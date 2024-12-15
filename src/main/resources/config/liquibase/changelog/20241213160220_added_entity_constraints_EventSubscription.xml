@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity EventSubscription.
+    -->
+    <changeSet id="20241213160220-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="types_id"
+                                 baseTableName="event_subscription"
+                                 constraintName="fk_event_subscription__types_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="subscription_type"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="payment_id"
+                                 baseTableName="event_subscription"
+                                 constraintName="fk_event_subscription__payment_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="payment"
+                                 />
+    </changeSet>
+</databaseChangeLog>

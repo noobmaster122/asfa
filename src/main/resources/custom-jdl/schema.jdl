@@ -1,0 +1,108 @@
+// Enums
+enum ProductTypeEnum {
+  VIRTUAL,
+  REAL
+}
+
+enum FamilyRank {
+  PRIMARY_GUARDIAN,
+  SPOUSE,
+  CHILDREN
+}
+
+// Entities
+
+//1
+entity EventSubscription {
+  subscriptionDate LocalDate required,
+  isActive Boolean required
+}
+//2
+entity Member {
+  memberUID UUID,
+  firstName String required maxlength(50),
+  lastName String required maxlength(50),
+  middleName String maxlength(50),
+  email String required maxlength(60),
+  country String required maxlength(50),
+  city String required maxlength(50),
+  address String required maxlength(250),
+  zipCode String required maxlength(5),
+  birthDate LocalDate required,
+  signupDate LocalDate required,
+  rank FamilyRank required
+}
+
+//3
+entity SubscriptionType {
+  label String required maxlength(100),
+  summary String maxlength(255)
+}
+
+//4
+entity Payment {
+  paymentUID UUID,
+  paymentDate LocalDate required,
+  amount Float required,
+  timeStamp Instant required
+}
+
+//5
+entity PaymentMethod {
+  label String required maxlength(100)
+}
+
+entity Product {
+  productUID UUID,
+  contractNumber String required maxlength(255),
+  startDate LocalDate required,
+  endDate LocalDate,
+  summary String maxlength(255),
+  productType ProductTypeEnum required,
+}
+
+entity Category {
+  label String required maxlength(100),
+  summary String maxlength(255)
+}
+
+
+
+
+
+// Relationships
+//1
+relationship OneToMany {
+  Member{familyMembers} to Member
+}
+//2
+relationship ManyToMany {
+  Member{eventsubscription} to EventSubscription{member}
+}
+//3
+relationship ManyToMany {
+  Product{eventsubscription} to EventSubscription{product}
+}
+//4
+relationship OneToMany {
+  SubscriptionType{subscription} to EventSubscription{types}
+}
+//5
+relationship OneToMany {
+  Payment{eventsubscription} to EventSubscription{payment}
+}
+//6
+relationship OneToMany {
+  PaymentMethod{payment} to Payment{paymentmethods}
+}
+//7
+relationship OneToMany {
+  Category{product} to Product{categories}
+}
+
+
+
+// Options
+paginate Member, SubscriptionType, EventSubscription, Category, Product, Payment, PaymentMethod with pagination
+dto * with mapstruct
+service * with serviceClass

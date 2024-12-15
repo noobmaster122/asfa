@@ -1,0 +1,275 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-member-heading" data-cy="MemberCreateUpdateHeading">Créer ou éditer un Member</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_memberUID">Member UID</label>
+          <input type="text" class="form-control" name="memberUID" id="field_memberUID" data-cy="memberUID" formControlName="memberUID" />
+        </div>
+
+        @let firstNameRef = editForm.get('firstName')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_firstName">First Name</label>
+          <input type="text" class="form-control" name="firstName" id="field_firstName" data-cy="firstName" formControlName="firstName" />
+          @if (firstNameRef.invalid && (firstNameRef.dirty || firstNameRef.touched)) {
+            <div>
+              @if (editForm.get('firstName')?.errors?.required) {
+                <small class="form-text text-danger">Ce champ est obligatoire.</small>
+              }
+              @if (editForm.get('firstName')?.errors?.maxlength) {
+                <small class="form-text text-danger">Ce champ doit faire moins de 50 caractères.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let lastNameRef = editForm.get('lastName')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_lastName">Last Name</label>
+          <input type="text" class="form-control" name="lastName" id="field_lastName" data-cy="lastName" formControlName="lastName" />
+          @if (lastNameRef.invalid && (lastNameRef.dirty || lastNameRef.touched)) {
+            <div>
+              @if (editForm.get('lastName')?.errors?.required) {
+                <small class="form-text text-danger">Ce champ est obligatoire.</small>
+              }
+              @if (editForm.get('lastName')?.errors?.maxlength) {
+                <small class="form-text text-danger">Ce champ doit faire moins de 50 caractères.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let middleNameRef = editForm.get('middleName')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_middleName">Middle Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="middleName"
+            id="field_middleName"
+            data-cy="middleName"
+            formControlName="middleName"
+          />
+          @if (middleNameRef.invalid && (middleNameRef.dirty || middleNameRef.touched)) {
+            <div>
+              @if (editForm.get('middleName')?.errors?.maxlength) {
+                <small class="form-text text-danger">Ce champ doit faire moins de 50 caractères.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let emailRef = editForm.get('email')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+          @if (emailRef.invalid && (emailRef.dirty || emailRef.touched)) {
+            <div>
+              @if (editForm.get('email')?.errors?.required) {
+                <small class="form-text text-danger">Ce champ est obligatoire.</small>
+              }
+              @if (editForm.get('email')?.errors?.maxlength) {
+                <small class="form-text text-danger">Ce champ doit faire moins de 60 caractères.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let countryRef = editForm.get('country')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_country">Country</label>
+          <input type="text" class="form-control" name="country" id="field_country" data-cy="country" formControlName="country" />
+          @if (countryRef.invalid && (countryRef.dirty || countryRef.touched)) {
+            <div>
+              @if (editForm.get('country')?.errors?.required) {
+                <small class="form-text text-danger">Ce champ est obligatoire.</small>
+              }
+              @if (editForm.get('country')?.errors?.maxlength) {
+                <small class="form-text text-danger">Ce champ doit faire moins de 50 caractères.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let cityRef = editForm.get('city')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_city">City</label>
+          <input type="text" class="form-control" name="city" id="field_city" data-cy="city" formControlName="city" />
+          @if (cityRef.invalid && (cityRef.dirty || cityRef.touched)) {
+            <div>
+              @if (editForm.get('city')?.errors?.required) {
+                <small class="form-text text-danger">Ce champ est obligatoire.</small>
+              }
+              @if (editForm.get('city')?.errors?.maxlength) {
+                <small class="form-text text-danger">Ce champ doit faire moins de 50 caractères.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let addressRef = editForm.get('address')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_address">Address</label>
+          <input type="text" class="form-control" name="address" id="field_address" data-cy="address" formControlName="address" />
+          @if (addressRef.invalid && (addressRef.dirty || addressRef.touched)) {
+            <div>
+              @if (editForm.get('address')?.errors?.required) {
+                <small class="form-text text-danger">Ce champ est obligatoire.</small>
+              }
+              @if (editForm.get('address')?.errors?.maxlength) {
+                <small class="form-text text-danger">Ce champ doit faire moins de 250 caractères.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let zipCodeRef = editForm.get('zipCode')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_zipCode">Zip Code</label>
+          <input type="text" class="form-control" name="zipCode" id="field_zipCode" data-cy="zipCode" formControlName="zipCode" />
+          @if (zipCodeRef.invalid && (zipCodeRef.dirty || zipCodeRef.touched)) {
+            <div>
+              @if (editForm.get('zipCode')?.errors?.required) {
+                <small class="form-text text-danger">Ce champ est obligatoire.</small>
+              }
+              @if (editForm.get('zipCode')?.errors?.maxlength) {
+                <small class="form-text text-danger">Ce champ doit faire moins de 5 caractères.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let birthDateRef = editForm.get('birthDate')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_birthDate">Birth Date</label>
+          <div class="input-group">
+            <input
+              id="field_birthDate"
+              data-cy="birthDate"
+              type="text"
+              class="form-control"
+              name="birthDate"
+              ngbDatepicker
+              #birthDateDp="ngbDatepicker"
+              formControlName="birthDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="birthDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          @if (birthDateRef.invalid && (birthDateRef.dirty || birthDateRef.touched)) {
+            <div>
+              @if (editForm.get('birthDate')?.errors?.required) {
+                <small class="form-text text-danger">Ce champ est obligatoire.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let signupDateRef = editForm.get('signupDate')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_signupDate">Signup Date</label>
+          <div class="input-group">
+            <input
+              id="field_signupDate"
+              data-cy="signupDate"
+              type="text"
+              class="form-control"
+              name="signupDate"
+              ngbDatepicker
+              #signupDateDp="ngbDatepicker"
+              formControlName="signupDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="signupDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          @if (signupDateRef.invalid && (signupDateRef.dirty || signupDateRef.touched)) {
+            <div>
+              @if (editForm.get('signupDate')?.errors?.required) {
+                <small class="form-text text-danger">Ce champ est obligatoire.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let rankRef = editForm.get('rank')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_rank">Rank</label>
+          <select class="form-control" name="rank" formControlName="rank" id="field_rank" data-cy="rank">
+            <option [ngValue]="null"></option>
+            @for (familyRank of familyRankValues; track $index) {
+              <option [value]="familyRank">
+                {{ { null: '', PRIMARY_GUARDIAN: 'PRIMARY_GUARDIAN', SPOUSE: 'SPOUSE', CHILDREN: 'CHILDREN' }[familyRank] }}
+              </option>
+            }
+          </select>
+          @if (rankRef.invalid && (rankRef.dirty || rankRef.touched)) {
+            <div>
+              @if (editForm.get('rank')?.errors?.required) {
+                <small class="form-text text-danger">Ce champ est obligatoire.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label for="field_eventsubscriptions">Eventsubscription</label>
+          <select
+            class="form-control"
+            id="field_eventsubscriptions"
+            data-cy="eventsubscription"
+            multiple
+            name="eventsubscriptions"
+            formControlName="eventsubscriptions"
+            [compareWith]="compareEventSubscription"
+          >
+            @for (eventSubscriptionOption of eventSubscriptionsSharedCollection; track $index) {
+              <option [ngValue]="eventSubscriptionOption">{{ eventSubscriptionOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_member">Member</label>
+          <select
+            class="form-control"
+            id="field_member"
+            data-cy="member"
+            name="member"
+            formControlName="member"
+            [compareWith]="compareMember"
+          >
+            <option [ngValue]="null"></option>
+            @for (memberOption of membersSharedCollection; track $index) {
+              <option [ngValue]="memberOption">{{ memberOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

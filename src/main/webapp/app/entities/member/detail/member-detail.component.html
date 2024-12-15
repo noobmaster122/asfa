@@ -1,0 +1,97 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (member(); as memberRef) {
+      <div>
+        <h2 data-cy="memberDetailsHeading"><span>Member</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ memberRef.id }}</span>
+          </dd>
+          <dt><span>Member UID</span></dt>
+          <dd>
+            <span>{{ memberRef.memberUID }}</span>
+          </dd>
+          <dt><span>First Name</span></dt>
+          <dd>
+            <span>{{ memberRef.firstName }}</span>
+          </dd>
+          <dt><span>Last Name</span></dt>
+          <dd>
+            <span>{{ memberRef.lastName }}</span>
+          </dd>
+          <dt><span>Middle Name</span></dt>
+          <dd>
+            <span>{{ memberRef.middleName }}</span>
+          </dd>
+          <dt><span>Email</span></dt>
+          <dd>
+            <span>{{ memberRef.email }}</span>
+          </dd>
+          <dt><span>Country</span></dt>
+          <dd>
+            <span>{{ memberRef.country }}</span>
+          </dd>
+          <dt><span>City</span></dt>
+          <dd>
+            <span>{{ memberRef.city }}</span>
+          </dd>
+          <dt><span>Address</span></dt>
+          <dd>
+            <span>{{ memberRef.address }}</span>
+          </dd>
+          <dt><span>Zip Code</span></dt>
+          <dd>
+            <span>{{ memberRef.zipCode }}</span>
+          </dd>
+          <dt><span>Birth Date</span></dt>
+          <dd>
+            <span>{{ memberRef.birthDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span>Signup Date</span></dt>
+          <dd>
+            <span>{{ memberRef.signupDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span>Rank</span></dt>
+          <dd>
+            <span>{{
+              { null: '', PRIMARY_GUARDIAN: 'PRIMARY_GUARDIAN', SPOUSE: 'SPOUSE', CHILDREN: 'CHILDREN' }[memberRef.rank ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span>Eventsubscription</span></dt>
+          <dd>
+            @for (eventsubscription of memberRef.eventsubscriptions; track $index; let last = $last) {
+              <span>
+                <a [routerLink]="['/event-subscription', eventsubscription.id, 'view']">{{ eventsubscription?.id }}</a
+                >{{ last ? '' : ', ' }}
+              </span>
+            }
+          </dd>
+          <dt><span>Member</span></dt>
+          <dd>
+            @if (member()!.member) {
+              <div>
+                <a [routerLink]="['/member', member()!.member?.id, 'view']">{{ memberRef.member?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/member', memberRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

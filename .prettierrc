@@ -4,10 +4,11 @@ tabWidth: 2
 useTabs: false
 arrowParens: avoid
 bracketSameLine: false
+endOfLine: lf
 plugins:
   - prettier-plugin-packagejson
   - prettier-plugin-java
 overrides:
-  - files: "*.java"
+  - files: '*.java'
     options:
       tabWidth: 4

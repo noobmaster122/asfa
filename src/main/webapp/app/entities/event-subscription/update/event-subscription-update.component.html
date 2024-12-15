@@ -1,0 +1,142 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-event-subscription-heading" data-cy="EventSubscriptionCreateUpdateHeading">Créer ou éditer un Event Subscription</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let subscriptionDateRef = editForm.get('subscriptionDate')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_subscriptionDate">Subscription Date</label>
+          <div class="input-group">
+            <input
+              id="field_subscriptionDate"
+              data-cy="subscriptionDate"
+              type="text"
+              class="form-control"
+              name="subscriptionDate"
+              ngbDatepicker
+              #subscriptionDateDp="ngbDatepicker"
+              formControlName="subscriptionDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="subscriptionDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+          @if (subscriptionDateRef.invalid && (subscriptionDateRef.dirty || subscriptionDateRef.touched)) {
+            <div>
+              @if (editForm.get('subscriptionDate')?.errors?.required) {
+                <small class="form-text text-danger">Ce champ est obligatoire.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let isActiveRef = editForm.get('isActive')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_isActive">Is Active</label>
+          <input type="checkbox" class="form-check" name="isActive" id="field_isActive" data-cy="isActive" formControlName="isActive" />
+          @if (isActiveRef.invalid && (isActiveRef.dirty || isActiveRef.touched)) {
+            <div>
+              @if (editForm.get('isActive')?.errors?.required) {
+                <small class="form-text text-danger">Ce champ est obligatoire.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_types">Types</label>
+          <select
+            class="form-control"
+            id="field_types"
+            data-cy="types"
+            name="types"
+            formControlName="types"
+            [compareWith]="compareSubscriptionType"
+          >
+            <option [ngValue]="null"></option>
+            @for (subscriptionTypeOption of subscriptionTypesSharedCollection; track $index) {
+              <option [ngValue]="subscriptionTypeOption">{{ subscriptionTypeOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_payment">Payment</label>
+          <select
+            class="form-control"
+            id="field_payment"
+            data-cy="payment"
+            name="payment"
+            formControlName="payment"
+            [compareWith]="comparePayment"
+          >
+            <option [ngValue]="null"></option>
+            @for (paymentOption of paymentsSharedCollection; track $index) {
+              <option [ngValue]="paymentOption">{{ paymentOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="field_members">Member</label>
+          <select
+            class="form-control"
+            id="field_members"
+            data-cy="member"
+            multiple
+            name="members"
+            formControlName="members"
+            [compareWith]="compareMember"
+          >
+            @for (memberOption of membersSharedCollection; track $index) {
+              <option [ngValue]="memberOption">{{ memberOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="field_products">Product</label>
+          <select
+            class="form-control"
+            id="field_products"
+            data-cy="product"
+            multiple
+            name="products"
+            formControlName="products"
+            [compareWith]="compareProduct"
+          >
+            @for (productOption of productsSharedCollection; track $index) {
+              <option [ngValue]="productOption">{{ productOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

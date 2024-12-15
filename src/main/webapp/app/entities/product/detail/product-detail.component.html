@@ -1,0 +1,71 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (product(); as productRef) {
+      <div>
+        <h2 data-cy="productDetailsHeading"><span>Product</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ productRef.id }}</span>
+          </dd>
+          <dt><span>Product UID</span></dt>
+          <dd>
+            <span>{{ productRef.productUID }}</span>
+          </dd>
+          <dt><span>Contract Number</span></dt>
+          <dd>
+            <span>{{ productRef.contractNumber }}</span>
+          </dd>
+          <dt><span>Start Date</span></dt>
+          <dd>
+            <span>{{ productRef.startDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span>End Date</span></dt>
+          <dd>
+            <span>{{ productRef.endDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span>Summary</span></dt>
+          <dd>
+            <span>{{ productRef.summary }}</span>
+          </dd>
+          <dt><span>Product Type</span></dt>
+          <dd>
+            <span>{{ { null: '', VIRTUAL: 'VIRTUAL', REAL: 'REAL' }[productRef.productType ?? 'null'] }}</span>
+          </dd>
+          <dt><span>Eventsubscription</span></dt>
+          <dd>
+            @for (eventsubscription of productRef.eventsubscriptions; track $index; let last = $last) {
+              <span>
+                <a [routerLink]="['/event-subscription', eventsubscription.id, 'view']">{{ eventsubscription?.id }}</a
+                >{{ last ? '' : ', ' }}
+              </span>
+            }
+          </dd>
+          <dt><span>Categories</span></dt>
+          <dd>
+            @if (product()!.categories) {
+              <div>
+                <a [routerLink]="['/category', product()!.categories?.id, 'view']">{{ productRef.categories?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/product', productRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

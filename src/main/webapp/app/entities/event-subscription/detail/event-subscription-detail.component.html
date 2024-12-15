@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (eventSubscription(); as eventSubscriptionRef) {
+      <div>
+        <h2 data-cy="eventSubscriptionDetailsHeading"><span>Event Subscription</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ eventSubscriptionRef.id }}</span>
+          </dd>
+          <dt><span>Subscription Date</span></dt>
+          <dd>
+            <span>{{ eventSubscriptionRef.subscriptionDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span>Is Active</span></dt>
+          <dd>
+            <span>{{ eventSubscriptionRef.isActive }}</span>
+          </dd>
+          <dt><span>Types</span></dt>
+          <dd>
+            @if (eventSubscription()!.types) {
+              <div>
+                <a [routerLink]="['/subscription-type', eventSubscription()!.types?.id, 'view']">{{ eventSubscriptionRef.types?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span>Payment</span></dt>
+          <dd>
+            @if (eventSubscription()!.payment) {
+              <div>
+                <a [routerLink]="['/payment', eventSubscription()!.payment?.id, 'view']">{{ eventSubscriptionRef.payment?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span>Member</span></dt>
+          <dd>
+            @for (member of eventSubscriptionRef.members; track $index; let last = $last) {
+              <span>
+                <a [routerLink]="['/member', member.id, 'view']">{{ member?.id }}</a
+                >{{ last ? '' : ', ' }}
+              </span>
+            }
+          </dd>
+          <dt><span>Product</span></dt>
+          <dd>
+            @for (product of eventSubscriptionRef.products; track $index; let last = $last) {
+              <span>
+                <a [routerLink]="['/product', product.id, 'view']">{{ product?.id }}</a
+                >{{ last ? '' : ', ' }}
+              </span>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/event-subscription', eventSubscriptionRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,176 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-product-heading" data-cy="ProductCreateUpdateHeading">Créer ou éditer un Product</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_productUID">Product UID</label>
+          <input
+            type="text"
+            class="form-control"
+            name="productUID"
+            id="field_productUID"
+            data-cy="productUID"
+            formControlName="productUID"
+          />
+        </div>
+
+        @let contractNumberRef = editForm.get('contractNumber')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_contractNumber">Contract Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="contractNumber"
+            id="field_contractNumber"
+            data-cy="contractNumber"
+            formControlName="contractNumber"
+          />
+          @if (contractNumberRef.invalid && (contractNumberRef.dirty || contractNumberRef.touched)) {
+            <div>
+              @if (editForm.get('contractNumber')?.errors?.required) {
+                <small class="form-text text-danger">Ce champ est obligatoire.</small>
+              }
+              @if (editForm.get('contractNumber')?.errors?.maxlength) {
+                <small class="form-text text-danger">Ce champ doit faire moins de 255 caractères.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let startDateRef = editForm.get('startDate')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_startDate">Start Date</label>
+          <div class="input-group">
+            <input
+              id="field_startDate"
+              data-cy="startDate"
+              type="text"
+              class="form-control"
+              name="startDate"
+              ngbDatepicker
+              #startDateDp="ngbDatepicker"
+              formControlName="startDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="startDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          @if (startDateRef.invalid && (startDateRef.dirty || startDateRef.touched)) {
+            <div>
+              @if (editForm.get('startDate')?.errors?.required) {
+                <small class="form-text text-danger">Ce champ est obligatoire.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_endDate">End Date</label>
+          <div class="input-group">
+            <input
+              id="field_endDate"
+              data-cy="endDate"
+              type="text"
+              class="form-control"
+              name="endDate"
+              ngbDatepicker
+              #endDateDp="ngbDatepicker"
+              formControlName="endDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="endDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        @let summaryRef = editForm.get('summary')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_summary">Summary</label>
+          <input type="text" class="form-control" name="summary" id="field_summary" data-cy="summary" formControlName="summary" />
+          @if (summaryRef.invalid && (summaryRef.dirty || summaryRef.touched)) {
+            <div>
+              @if (editForm.get('summary')?.errors?.maxlength) {
+                <small class="form-text text-danger">Ce champ doit faire moins de 255 caractères.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let productTypeRef = editForm.get('productType')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_productType">Product Type</label>
+          <select class="form-control" name="productType" formControlName="productType" id="field_productType" data-cy="productType">
+            <option [ngValue]="null"></option>
+            @for (productTypeEnum of productTypeEnumValues; track $index) {
+              <option [value]="productTypeEnum">{{ { null: '', VIRTUAL: 'VIRTUAL', REAL: 'REAL' }[productTypeEnum] }}</option>
+            }
+          </select>
+          @if (productTypeRef.invalid && (productTypeRef.dirty || productTypeRef.touched)) {
+            <div>
+              @if (editForm.get('productType')?.errors?.required) {
+                <small class="form-text text-danger">Ce champ est obligatoire.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label for="field_eventsubscriptions">Eventsubscription</label>
+          <select
+            class="form-control"
+            id="field_eventsubscriptions"
+            data-cy="eventsubscription"
+            multiple
+            name="eventsubscriptions"
+            formControlName="eventsubscriptions"
+            [compareWith]="compareEventSubscription"
+          >
+            @for (eventSubscriptionOption of eventSubscriptionsSharedCollection; track $index) {
+              <option [ngValue]="eventSubscriptionOption">{{ eventSubscriptionOption.id }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_categories">Categories</label>
+          <select
+            class="form-control"
+            id="field_categories"
+            data-cy="categories"
+            name="categories"
+            formControlName="categories"
+            [compareWith]="compareCategory"
+          >
+            <option [ngValue]="null"></option>
+            @for (categoryOption of categoriesSharedCollection; track $index) {
+              <option [ngValue]="categoryOption">{{ categoryOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

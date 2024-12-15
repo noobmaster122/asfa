@@ -782,7 +782,8 @@
                     <configuration>
                         <changeLogFile>config/liquibase/master.xml</changeLogFile>
                         <diffChangeLogFile>${project.basedir}/src/main/resources/config/liquibase/changelog/${maven.build.timestamp}_changelog.xml</diffChangeLogFile>
-                        <driver>org.postgresql.Driver</driver>
+                      <outputChangeLogFile>src/main/resources/config/liquibase/changelog/${maven.build.timestamp}_changeset.xml</outputChangeLogFile>
+                      <driver>org.postgresql.Driver</driver>
                         <url>${liquibase-plugin.url}</url>
                         <defaultSchemaName/>
                         <username>${liquibase-plugin.username}</username>

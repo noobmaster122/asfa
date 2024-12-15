@@ -1,0 +1,34 @@
+{
+  "annotations": {
+    "changelogDate": "20241213160225"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "label",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "summary",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "255"
+    }
+  ],
+  "name": "SubscriptionType",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "eventSubscription",
+      "otherEntityRelationshipName": "types",
+      "relationshipName": "subscription",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

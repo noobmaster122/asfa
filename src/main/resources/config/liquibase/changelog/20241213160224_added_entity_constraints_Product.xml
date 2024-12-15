@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity Product.
+    -->
+    <changeSet id="20241213160224-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="product_id"
+                                 baseTableName="rel_product__eventsubscription"
+                                 constraintName="fk_rel_product__eventsubscription__product_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="product"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="eventsubscription_id"
+                                 baseTableName="rel_product__eventsubscription"
+                                 constraintName="fk_rel_product__eventsubscription__eventsubscription_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="event_subscription"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="categories_id"
+                                 baseTableName="product"
+                                 constraintName="fk_product__categories_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="category"
+                                 />
+    </changeSet>
+</databaseChangeLog>

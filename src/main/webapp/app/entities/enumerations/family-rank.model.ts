@@ -1,0 +1,7 @@
+export enum FamilyRank {
+  PRIMARY_GUARDIAN = 'PRIMARY_GUARDIAN',
+
+  SPOUSE = 'SPOUSE',
+
+  CHILDREN = 'CHILDREN',
+}

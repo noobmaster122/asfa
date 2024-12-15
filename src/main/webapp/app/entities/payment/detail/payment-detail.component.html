@@ -1,0 +1,54 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (payment(); as paymentRef) {
+      <div>
+        <h2 data-cy="paymentDetailsHeading"><span>Payment</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span>ID</span></dt>
+          <dd>
+            <span>{{ paymentRef.id }}</span>
+          </dd>
+          <dt><span>Payment UID</span></dt>
+          <dd>
+            <span>{{ paymentRef.paymentUID }}</span>
+          </dd>
+          <dt><span>Payment Date</span></dt>
+          <dd>
+            <span>{{ paymentRef.paymentDate | formatMediumDate }}</span>
+          </dd>
+          <dt><span>Amount</span></dt>
+          <dd>
+            <span>{{ paymentRef.amount }}</span>
+          </dd>
+          <dt><span>Time Stamp</span></dt>
+          <dd>
+            <span>{{ paymentRef.timeStamp | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span>Paymentmethods</span></dt>
+          <dd>
+            @if (payment()!.paymentmethods) {
+              <div>
+                <a [routerLink]="['/payment-method', payment()!.paymentmethods?.id, 'view']">{{ paymentRef.paymentmethods?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/payment', paymentRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>
