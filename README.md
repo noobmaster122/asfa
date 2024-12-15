@@ -2,6 +2,22 @@
 
 This application was generated using JHipster 8.7.1, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v8.7.1](https://www.jhipster.tech/documentation-archive/v8.7.1).
 
+## Développer pour les noobs :)
+
+1- Lancez le conteneur PostgreSQL avec la commande suivante ` docker compose -f .\src\main\docker\postgresql.yml up` ou installez postgresql locallement
+
+2- Lancer le backend avec cette commande `  npm run backend:start  `
+
+3- Lancer le front end avec cette commande `ng serve`
+
+4- Vous rencontrerez probablement des erreurs liées à Prettier. Pour contourner cela, il faut envelopper les console.log comme suit
+
+```
+    /* eslint-disable no-console */
+    console.log('am new member', member);
+    /* eslint-enable no-console */
+```
+
 ## Project Structure
 
 Node is required for generation and recommended for development. `package.json` is always generated for a better development experience with prettier, commit hooks, scripts and so on.
