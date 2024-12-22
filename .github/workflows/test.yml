@@ -1,0 +1,68 @@
+name: Test ASFA Application
+
+on:
+  workflow_run:
+    workflows:
+      - Build ASFA Application
+    types:
+      - completed
+
+jobs:
+  test:
+    name: Test JHipster App
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16.4
+        env:
+          POSTGRES_USER: asfa
+          POSTGRES_PASSWORD: password
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U asfa"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      #      - name: Set up Node.js
+      #        uses: actions/setup-node@v4
+      #        with:
+      #          node-version: '20'
+      - name: Grant execute permissions to Npmw wrapper
+        run: chmod +x ./npmw
+
+      - name: Install Frontend Dependencies
+        run: |
+          ./npmw install
+          ./npmw run build --if-present
+
+      - name: Grant execute permissions to Maven wrapper
+        run: chmod +x ./mvnw
+
+      - name: Build and Test Backend
+        run: |
+          ./mvnw clean verify -X -e
+        env:
+          SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/asfa
+          SPRING_DATASOURCE_USERNAME: asfa
+          SPRING_DATASOURCE_PASSWORD: password
+
+      - name: Archive target
+        uses: actions/upload-artifact@v4
+        with:
+          name: Build and test results
+          path: target/
