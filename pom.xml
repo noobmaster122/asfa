@@ -22,6 +22,8 @@
             Build properties
             The spring-boot version should match the one managed by https://mvnrepository.com/artifact/tech.jhipster/jhipster-dependencies/${jhipster-dependencies.version}
         -->
+      <sonar.organization>noobmaster122</sonar.organization>
+      <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <maven.version>3.2.5</maven.version>
         <java.version>17</java.version>
         <node.version>v20.17.0</node.version>
