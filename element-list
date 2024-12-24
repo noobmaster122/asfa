@@ -1,0 +1,14 @@
+org.asfa.managerasfa
+org.asfa.managerasfa.aop.logging
+org.asfa.managerasfa.config
+org.asfa.managerasfa.domain
+org.asfa.managerasfa.repository
+org.asfa.managerasfa.security
+org.asfa.managerasfa.service
+org.asfa.managerasfa.service.dto
+org.asfa.managerasfa.service.mapper
+org.asfa.managerasfa.web.api
+org.asfa.managerasfa.web.filter
+org.asfa.managerasfa.web.rest
+org.asfa.managerasfa.web.rest.errors
+org.asfa.managerasfa.web.rest.vm
