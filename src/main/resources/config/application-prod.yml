@@ -42,11 +42,22 @@ spring:
   # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
   liquibase:
     contexts: prod
+  #  mail:
+  #    host: localhost
+  #    port: 25
+  #    username:
+  #    password:
   mail:
-    host: localhost
-    port: 25
-    username:
-    password:
+    host: smtp-mail.outlook.com
+    port: 587
+    username: ${{ secrets.ASFA_MAIL_USERNAME }}
+    password: ${{ secrets.ASFA_MAIL_PASSWORD }}
+    protocol: smtp
+    tls: true
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+      ssl.trust: smtp-mail.outlook.com
   thymeleaf:
     cache: true
 

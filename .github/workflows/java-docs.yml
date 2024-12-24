@@ -1,0 +1,41 @@
+name: Generate and publish ASFA docs
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Configure Git with Token Authentication
+        run: |
+          git config --global user.name "${{ secrets.DEPLOYMENT_USER }}"
+          git config --global user.email "${{ secrets.DEPLOYMENT_EMAIL }}"
+          echo "Using token for authentication"
+          echo "https://${{ secrets.GIT_TOKEN }}@github.com" > ~/.git-credentials
+          cat ~/.git-credentials
+          git config credential.helper store
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Generate Javadoc
+        run: mvn javadoc:javadoc
+
+      - name: Deploy Javadoc to GitHub Pages
+        run: |
+          git clone --branch gh-pages https://${{ secrets.GIT_TOKEN }}@github.com/noobmaster122/asfa.git gh-pages
+          rm -rf gh-pages/*
+          cp -r target/reports/apidocs/* gh-pages/
+          cd gh-pages
+          git add .
+          git commit -m "Update Javadoc [skip ci]"
+          git push origin gh-pages
