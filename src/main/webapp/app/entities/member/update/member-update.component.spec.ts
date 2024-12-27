@@ -133,7 +133,7 @@ describe('Member Management Update Component', () => {
       // GIVEN
       const saveSubject = new Subject<HttpResponse<IMember>>();
       const member = { id: 123 };
-      jest.spyOn(memberFormService, 'getMember').mockReturnValue({ id: null });
+      jest.spyOn(memberFormService, 'getMember').mockReturnValue({ id: null, memberUID: null });
       jest.spyOn(memberService, 'create').mockReturnValue(saveSubject);
       jest.spyOn(comp, 'previousState');
       activatedRoute.data = of({ member: null });

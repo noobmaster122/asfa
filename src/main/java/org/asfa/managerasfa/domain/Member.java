@@ -26,7 +26,7 @@ public class Member implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "member_uid")
+    @Column(name = "member_uid", updatable = false)
     private UUID memberUID;
 
     @NotNull
@@ -99,6 +99,11 @@ public class Member implements Serializable {
     private Member member;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
+
+    @PrePersist
+    public void generateMemberUID() {
+        this.memberUID = UUID.randomUUID();
+    }
 
     public Long getId() {
         return this.id;

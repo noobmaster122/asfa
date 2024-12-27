@@ -18,7 +18,6 @@ export const sampleWithRequiredData: IMember = {
 
 export const sampleWithPartialData: IMember = {
   id: 10866,
-  memberUID: 'd5fda7e3-1a9c-45b6-9bb0-bc293d5b4c02',
   firstName: 'Paterne',
   lastName: 'Louis',
   middleName: 'grandement membre titulaire tard',
@@ -34,7 +33,7 @@ export const sampleWithPartialData: IMember = {
 
 export const sampleWithFullData: IMember = {
   id: 22447,
-  memberUID: 'cd31212c-a5a0-4173-8e37-6dcd4d58ac19',
+  memberUID: null,
   firstName: 'Berthe',
   lastName: 'Robert',
   middleName: 'chef pendant que autrefois',
@@ -49,6 +48,7 @@ export const sampleWithFullData: IMember = {
 };
 
 export const sampleWithNewData: NewMember = {
+  memberUID: null,
   firstName: 'Gontran',
   lastName: 'Bonnet',
   email: 'Stephanie97@yahoo.fr',
