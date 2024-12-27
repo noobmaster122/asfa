@@ -49,7 +49,6 @@ describe('Member Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Member query and add missing value', () => {
       const member: IMember = { id: 456 };
-      const member: IMember = { id: 29785 };
       member.member = member;
 
       const memberCollection: IMember[] = [{ id: 12223 }];
@@ -93,7 +92,6 @@ describe('Member Management Update Component', () => {
 
     it('Should update editForm', () => {
       const member: IMember = { id: 456 };
-      const member: IMember = { id: 22891 };
       member.member = member;
       const eventsubscription: IEventSubscription = { id: 20848 };
       member.eventsubscriptions = [eventsubscription];
