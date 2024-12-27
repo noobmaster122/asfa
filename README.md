@@ -36,6 +36,30 @@ Follow these naming conventions for consistent branch management:
 - Keep names descriptive yet concise.
 - Include issue/ticket ID if applicable (e.g., `feature/1234-add-search`).
 
+### Commit Message Conventions
+
+Follow these conventions for clear and consistent commit messages:
+
+- **Structure**: `<type>: <short description>`
+
+  - Example: `feat: add user authentication`
+
+- **Types**:
+
+  - `feat`: New features (e.g., `feat: implement search functionality`)
+  - `fix`: Bug fixes (e.g., `fix: resolve login error`)
+  - `docs`: Documentation updates (e.g., `docs: update README`)
+  - `style`: Code formatting (e.g., `style: apply consistent indentation`)
+  - `refactor`: Code refactoring (e.g., `refactor: simplify API response`)
+  - `test`: Adding/updating tests (e.g., `test: add unit tests for service`)
+  - `chore`: Maintenance tasks (e.g., `chore: update dependencies`)
+
+- **Best Practices**:
+  - Keep messages concise and descriptive.
+  - Use present tense (e.g., `add`, not `added`).
+  - Limit the short description to 50 characters.
+  - Add a detailed body if necessary, separated by a blank line.
+
 ## Project Structure
 
 Node is required for generation and recommended for development. `package.json` is always generated for a better development experience with prettier, commit hooks, scripts and so on.
