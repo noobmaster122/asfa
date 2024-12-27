@@ -15,6 +15,27 @@ This application was generated using JHipster 8.7.1, you can find documentation 
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=noobmaster122_asfa&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=noobmaster122_asfa)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=noobmaster122_asfa&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=noobmaster122_asfa)
 
+## Branch Naming Conventions
+
+Follow these naming conventions for consistent branch management:
+
+- **Features**: `feature/short-description`
+
+  - Example: `feature/add-user-auth`
+
+- **Bug Fixes**: `bugfix/short-description`
+
+  - Example: `bugfix/fix-login-error`
+
+- **Hotfixes**: `hotfix/short-description`
+  - Example: `hotfix/critical-security-fix`
+
+**Best Practices**:
+
+- Use lowercase letters with words separated by dashes (`-`).
+- Keep names descriptive yet concise.
+- Include issue/ticket ID if applicable (e.g., `feature/1234-add-search`).
+
 ## Project Structure
 
 Node is required for generation and recommended for development. `package.json` is always generated for a better development experience with prettier, commit hooks, scripts and so on.
