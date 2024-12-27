@@ -2,7 +2,7 @@
 
 This application was generated using JHipster 8.7.1, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v8.7.1](https://www.jhipster.tech/documentation-archive/v8.7.1).
 
-![Static Badge](https://img.shields.io/badge/Jhipster-v8.7.3-blue)
+![Static Badge](https://img.shields.io/badge/Jhipster-v8.7.1-blue)
 ![Static Badge](https://img.shields.io/docker/pulls/spacecowboy72/asfa)
 ![Docker Image Version](https://img.shields.io/docker/v/spacecowboy72/asfa)
 ![Docker Image Size](https://img.shields.io/docker/image-size/spacecowboy72/asfa)
