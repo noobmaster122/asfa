@@ -2,6 +2,19 @@
 
 This application was generated using JHipster 8.7.1, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v8.7.1](https://www.jhipster.tech/documentation-archive/v8.7.1).
 
+![Static Badge](https://img.shields.io/badge/Jhipster-v8.7.3-blue)
+![Static Badge](https://img.shields.io/docker/pulls/spacecowboy72/asfa)
+![Docker Image Version](https://img.shields.io/docker/v/spacecowboy72/asfa)
+![Docker Image Size](https://img.shields.io/docker/image-size/spacecowboy72/asfa)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=noobmaster122_asfa&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=noobmaster122_asfa)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=noobmaster122_asfa&metric=bugs)](https://sonarcloud.io/summary/new_code?id=noobmaster122_asfa)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=noobmaster122_asfa&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=noobmaster122_asfa)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=noobmaster122_asfa&metric=coverage)](https://sonarcloud.io/summary/new_code?id=noobmaster122_asfa)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=noobmaster122_asfa&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=noobmaster122_asfa)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=noobmaster122_asfa&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=noobmaster122_asfa)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=noobmaster122_asfa&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=noobmaster122_asfa)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=noobmaster122_asfa&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=noobmaster122_asfa)
+
 ## Project Structure
 
 Node is required for generation and recommended for development. `package.json` is always generated for a better development experience with prettier, commit hooks, scripts and so on.
