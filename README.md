@@ -2,7 +2,7 @@
 
 This application was generated using JHipster 8.7.1, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v8.7.1](https://www.jhipster.tech/documentation-archive/v8.7.1).
 
-![Static Badge](https://img.shields.io/badge/Jhipster-v8.7.3-blue)
+![Static Badge](https://img.shields.io/badge/Jhipster-v8.7.1-blue)
 ![Static Badge](https://img.shields.io/docker/pulls/spacecowboy72/asfa)
 ![Docker Image Version](https://img.shields.io/docker/v/spacecowboy72/asfa)
 ![Docker Image Size](https://img.shields.io/docker/image-size/spacecowboy72/asfa)
@@ -14,6 +14,51 @@ This application was generated using JHipster 8.7.1, you can find documentation 
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=noobmaster122_asfa&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=noobmaster122_asfa)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=noobmaster122_asfa&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=noobmaster122_asfa)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=noobmaster122_asfa&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=noobmaster122_asfa)
+
+## Branch Naming Conventions
+
+Follow these naming conventions for consistent branch management:
+
+- **Features**: `feature/short-description`
+
+  - Example: `feature/add-user-auth`
+
+- **Bug Fixes**: `bugfix/short-description`
+
+  - Example: `bugfix/fix-login-error`
+
+- **Hotfixes**: `hotfix/short-description`
+  - Example: `hotfix/critical-security-fix`
+
+**Best Practices**:
+
+- Use lowercase letters with words separated by dashes (`-`).
+- Keep names descriptive yet concise.
+- Include issue/ticket ID if applicable (e.g., `feature/1234-add-search`).
+
+### Commit Message Conventions
+
+Follow these conventions for clear and consistent commit messages:
+
+- **Structure**: `<type>: <short description>`
+
+  - Example: `feat: add user authentication`
+
+- **Types**:
+
+  - `feat`: New features (e.g., `feat: implement search functionality`)
+  - `fix`: Bug fixes (e.g., `fix: resolve login error`)
+  - `docs`: Documentation updates (e.g., `docs: update README`)
+  - `style`: Code formatting (e.g., `style: apply consistent indentation`)
+  - `refactor`: Code refactoring (e.g., `refactor: simplify API response`)
+  - `test`: Adding/updating tests (e.g., `test: add unit tests for service`)
+  - `chore`: Maintenance tasks (e.g., `chore: update dependencies`)
+
+- **Best Practices**:
+  - Keep messages concise and descriptive.
+  - Use present tense (e.g., `add`, not `added`).
+  - Limit the short description to 50 characters.
+  - Add a detailed body if necessary, separated by a blank line.
 
 ## Project Structure
 
