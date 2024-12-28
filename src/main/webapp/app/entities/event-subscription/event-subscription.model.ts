@@ -8,6 +8,8 @@ export interface IEventSubscription {
   id: number;
   subscriptionDate?: dayjs.Dayjs | null;
   isActive?: boolean | null;
+  anonymousEmail?: string | null;
+  anonymousName?: string | null;
   types?: Pick<ISubscriptionType, 'id'> | null;
   payment?: Pick<IPayment, 'id'> | null;
   members?: Pick<IMember, 'id'>[] | null;

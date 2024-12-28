@@ -56,6 +56,20 @@
                 <fa-icon class="p-1" icon="sort"></fa-icon>
               </div>
             </th>
+            <th scope="col" jhiSortBy="anonymousEmail">
+              <div class="d-flex">
+                <span>Anonymous Email</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="anonymousName">
+              <div class="d-flex">
+                <span>Anonymous Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
             <th scope="col" jhiSortBy="types.id">
               <div class="d-flex">
                 <span>Types</span>
@@ -79,6 +93,8 @@
               </td>
               <td>{{ eventSubscription.subscriptionDate | formatMediumDate }}</td>
               <td>{{ eventSubscription.isActive }}</td>
+              <td>{{ eventSubscription.anonymousEmail }}</td>
+              <td>{{ eventSubscription.anonymousName }}</td>
               <td>
                 @if (eventSubscription.types) {
                   <div>

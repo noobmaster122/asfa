@@ -59,9 +59,6 @@ export class MemberUpdateComponent implements OnInit {
   save(): void {
     this.isSaving = true;
     const member = this.memberFormService.getMember(this.editForm);
-    /* eslint-disable no-console */
-    console.log('am new member', member);
-    /* eslint-enable no-console */
     if (member.id !== null) {
       this.subscribeToSaveResponse(this.memberService.update(member));
     } else {

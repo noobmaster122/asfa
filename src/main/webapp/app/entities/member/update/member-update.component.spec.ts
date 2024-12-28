@@ -49,6 +49,7 @@ describe('Member Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Member query and add missing value', () => {
       const member: IMember = { id: 456 };
+      const member: IMember = { id: 29785 };
       member.member = member;
 
       const memberCollection: IMember[] = [{ id: 12223 }];
@@ -70,10 +71,10 @@ describe('Member Management Update Component', () => {
 
     it('Should call EventSubscription query and add missing value', () => {
       const member: IMember = { id: 456 };
-      const eventsubscriptions: IEventSubscription[] = [{ id: 24918 }];
+      const eventsubscriptions: IEventSubscription[] = [{ id: 6708 }];
       member.eventsubscriptions = eventsubscriptions;
 
-      const eventSubscriptionCollection: IEventSubscription[] = [{ id: 10455 }];
+      const eventSubscriptionCollection: IEventSubscription[] = [{ id: 25862 }];
       jest.spyOn(eventSubscriptionService, 'query').mockReturnValue(of(new HttpResponse({ body: eventSubscriptionCollection })));
       const additionalEventSubscriptions = [...eventsubscriptions];
       const expectedCollection: IEventSubscription[] = [...additionalEventSubscriptions, ...eventSubscriptionCollection];
@@ -92,8 +93,9 @@ describe('Member Management Update Component', () => {
 
     it('Should update editForm', () => {
       const member: IMember = { id: 456 };
+      const member: IMember = { id: 22891 };
       member.member = member;
-      const eventsubscription: IEventSubscription = { id: 20848 };
+      const eventsubscription: IEventSubscription = { id: 19975 };
       member.eventsubscriptions = [eventsubscription];
 
       activatedRoute.data = of({ member });
@@ -133,7 +135,7 @@ describe('Member Management Update Component', () => {
       // GIVEN
       const saveSubject = new Subject<HttpResponse<IMember>>();
       const member = { id: 123 };
-      jest.spyOn(memberFormService, 'getMember').mockReturnValue({ id: null, memberUID: null });
+      jest.spyOn(memberFormService, 'getMember').mockReturnValue({ id: null });
       jest.spyOn(memberService, 'create').mockReturnValue(saveSubject);
       jest.spyOn(comp, 'previousState');
       activatedRoute.data = of({ member: null });

@@ -48,7 +48,9 @@ public class EventSubscriptionAsserts {
         assertThat(expected)
             .as("Verify EventSubscription relevant properties")
             .satisfies(e -> assertThat(e.getSubscriptionDate()).as("check subscriptionDate").isEqualTo(actual.getSubscriptionDate()))
-            .satisfies(e -> assertThat(e.getIsActive()).as("check isActive").isEqualTo(actual.getIsActive()));
+            .satisfies(e -> assertThat(e.getIsActive()).as("check isActive").isEqualTo(actual.getIsActive()))
+            .satisfies(e -> assertThat(e.getAnonymousEmail()).as("check anonymousEmail").isEqualTo(actual.getAnonymousEmail()))
+            .satisfies(e -> assertThat(e.getAnonymousName()).as("check anonymousName").isEqualTo(actual.getAnonymousName()));
     }
 
     /**

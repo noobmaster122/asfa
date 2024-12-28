@@ -21,6 +21,11 @@ public class EventSubscriptionDTO implements Serializable {
     @NotNull
     private Boolean isActive;
 
+    private String anonymousEmail;
+
+    @Size(max = 80)
+    private String anonymousName;
+
     private SubscriptionTypeDTO types;
 
     private PaymentDTO payment;
@@ -51,6 +56,22 @@ public class EventSubscriptionDTO implements Serializable {
 
     public void setIsActive(Boolean isActive) {
         this.isActive = isActive;
+    }
+
+    public String getAnonymousEmail() {
+        return anonymousEmail;
+    }
+
+    public void setAnonymousEmail(String anonymousEmail) {
+        this.anonymousEmail = anonymousEmail;
+    }
+
+    public String getAnonymousName() {
+        return anonymousName;
+    }
+
+    public void setAnonymousName(String anonymousName) {
+        this.anonymousName = anonymousName;
     }
 
     public SubscriptionTypeDTO getTypes() {
@@ -113,6 +134,8 @@ public class EventSubscriptionDTO implements Serializable {
             "id=" + getId() +
             ", subscriptionDate='" + getSubscriptionDate() + "'" +
             ", isActive='" + getIsActive() + "'" +
+            ", anonymousEmail='" + getAnonymousEmail() + "'" +
+            ", anonymousName='" + getAnonymousName() + "'" +
             ", types=" + getTypes() +
             ", payment=" + getPayment() +
             ", members=" + getMembers() +

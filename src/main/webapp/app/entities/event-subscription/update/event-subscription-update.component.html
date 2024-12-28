@@ -54,6 +54,38 @@
         </div>
 
         <div class="mb-3">
+          <label class="form-label" for="field_anonymousEmail">Anonymous Email</label>
+          <input
+            type="text"
+            class="form-control"
+            name="anonymousEmail"
+            id="field_anonymousEmail"
+            data-cy="anonymousEmail"
+            formControlName="anonymousEmail"
+          />
+        </div>
+
+        @let anonymousNameRef = editForm.get('anonymousName')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_anonymousName">Anonymous Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="anonymousName"
+            id="field_anonymousName"
+            data-cy="anonymousName"
+            formControlName="anonymousName"
+          />
+          @if (anonymousNameRef.invalid && (anonymousNameRef.dirty || anonymousNameRef.touched)) {
+            <div>
+              @if (editForm.get('anonymousName')?.errors?.maxlength) {
+                <small class="form-text text-danger">Ce champ doit faire moins de 80 caractères.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
           <label class="form-label" for="field_types">Types</label>
           <select
             class="form-control"

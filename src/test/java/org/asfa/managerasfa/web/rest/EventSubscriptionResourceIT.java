@@ -43,6 +43,12 @@ class EventSubscriptionResourceIT {
     private static final Boolean DEFAULT_IS_ACTIVE = false;
     private static final Boolean UPDATED_IS_ACTIVE = true;
 
+    private static final String DEFAULT_ANONYMOUS_EMAIL = "AAAAAAAAAA";
+    private static final String UPDATED_ANONYMOUS_EMAIL = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ANONYMOUS_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_ANONYMOUS_NAME = "BBBBBBBBBB";
+
     private static final String ENTITY_API_URL = "/api/event-subscriptions";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -75,7 +81,11 @@ class EventSubscriptionResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static EventSubscription createEntity() {
-        return new EventSubscription().subscriptionDate(DEFAULT_SUBSCRIPTION_DATE).isActive(DEFAULT_IS_ACTIVE);
+        return new EventSubscription()
+            .subscriptionDate(DEFAULT_SUBSCRIPTION_DATE)
+            .isActive(DEFAULT_IS_ACTIVE)
+            .anonymousEmail(DEFAULT_ANONYMOUS_EMAIL)
+            .anonymousName(DEFAULT_ANONYMOUS_NAME);
     }
 
     /**
@@ -85,7 +95,11 @@ class EventSubscriptionResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static EventSubscription createUpdatedEntity() {
-        return new EventSubscription().subscriptionDate(UPDATED_SUBSCRIPTION_DATE).isActive(UPDATED_IS_ACTIVE);
+        return new EventSubscription()
+            .subscriptionDate(UPDATED_SUBSCRIPTION_DATE)
+            .isActive(UPDATED_IS_ACTIVE)
+            .anonymousEmail(UPDATED_ANONYMOUS_EMAIL)
+            .anonymousName(UPDATED_ANONYMOUS_NAME);
     }
 
     @BeforeEach
@@ -210,7 +224,9 @@ class EventSubscriptionResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(eventSubscription.getId().intValue())))
             .andExpect(jsonPath("$.[*].subscriptionDate").value(hasItem(DEFAULT_SUBSCRIPTION_DATE.toString())))
-            .andExpect(jsonPath("$.[*].isActive").value(hasItem(DEFAULT_IS_ACTIVE.booleanValue())));
+            .andExpect(jsonPath("$.[*].isActive").value(hasItem(DEFAULT_IS_ACTIVE.booleanValue())))
+            .andExpect(jsonPath("$.[*].anonymousEmail").value(hasItem(DEFAULT_ANONYMOUS_EMAIL)))
+            .andExpect(jsonPath("$.[*].anonymousName").value(hasItem(DEFAULT_ANONYMOUS_NAME)));
     }
 
     @Test
@@ -226,7 +242,9 @@ class EventSubscriptionResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(eventSubscription.getId().intValue()))
             .andExpect(jsonPath("$.subscriptionDate").value(DEFAULT_SUBSCRIPTION_DATE.toString()))
-            .andExpect(jsonPath("$.isActive").value(DEFAULT_IS_ACTIVE.booleanValue()));
+            .andExpect(jsonPath("$.isActive").value(DEFAULT_IS_ACTIVE.booleanValue()))
+            .andExpect(jsonPath("$.anonymousEmail").value(DEFAULT_ANONYMOUS_EMAIL))
+            .andExpect(jsonPath("$.anonymousName").value(DEFAULT_ANONYMOUS_NAME));
     }
 
     @Test
@@ -248,7 +266,11 @@ class EventSubscriptionResourceIT {
         EventSubscription updatedEventSubscription = eventSubscriptionRepository.findById(eventSubscription.getId()).orElseThrow();
         // Disconnect from session so that the updates on updatedEventSubscription are not directly saved in db
         em.detach(updatedEventSubscription);
-        updatedEventSubscription.subscriptionDate(UPDATED_SUBSCRIPTION_DATE).isActive(UPDATED_IS_ACTIVE);
+        updatedEventSubscription
+            .subscriptionDate(UPDATED_SUBSCRIPTION_DATE)
+            .isActive(UPDATED_IS_ACTIVE)
+            .anonymousEmail(UPDATED_ANONYMOUS_EMAIL)
+            .anonymousName(UPDATED_ANONYMOUS_NAME);
         EventSubscriptionDTO eventSubscriptionDTO = eventSubscriptionMapper.toDto(updatedEventSubscription);
 
         restEventSubscriptionMockMvc
@@ -343,7 +365,7 @@ class EventSubscriptionResourceIT {
         EventSubscription partialUpdatedEventSubscription = new EventSubscription();
         partialUpdatedEventSubscription.setId(eventSubscription.getId());
 
-        partialUpdatedEventSubscription.subscriptionDate(UPDATED_SUBSCRIPTION_DATE);
+        partialUpdatedEventSubscription.subscriptionDate(UPDATED_SUBSCRIPTION_DATE).anonymousName(UPDATED_ANONYMOUS_NAME);
 
         restEventSubscriptionMockMvc
             .perform(
@@ -375,7 +397,11 @@ class EventSubscriptionResourceIT {
         EventSubscription partialUpdatedEventSubscription = new EventSubscription();
         partialUpdatedEventSubscription.setId(eventSubscription.getId());
 
-        partialUpdatedEventSubscription.subscriptionDate(UPDATED_SUBSCRIPTION_DATE).isActive(UPDATED_IS_ACTIVE);
+        partialUpdatedEventSubscription
+            .subscriptionDate(UPDATED_SUBSCRIPTION_DATE)
+            .isActive(UPDATED_IS_ACTIVE)
+            .anonymousEmail(UPDATED_ANONYMOUS_EMAIL)
+            .anonymousName(UPDATED_ANONYMOUS_NAME);
 
         restEventSubscriptionMockMvc
             .perform(

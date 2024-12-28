@@ -32,6 +32,14 @@ public class EventSubscription implements Serializable {
     @Column(name = "is_active", nullable = false)
     private Boolean isActive;
 
+    @Size(max = 80)
+    @Column(name = "anonymous_email")
+    private String anonymousEmail;
+
+    @Size(max = 80)
+    @Column(name = "anonymous_name", length = 80)
+    private String anonymousName;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = { "subscriptions" }, allowSetters = true)
     private SubscriptionType types;
@@ -87,6 +95,32 @@ public class EventSubscription implements Serializable {
 
     public void setIsActive(Boolean isActive) {
         this.isActive = isActive;
+    }
+
+    public String getAnonymousEmail() {
+        return this.anonymousEmail;
+    }
+
+    public EventSubscription anonymousEmail(String anonymousEmail) {
+        this.setAnonymousEmail(anonymousEmail);
+        return this;
+    }
+
+    public void setAnonymousEmail(String anonymousEmail) {
+        this.anonymousEmail = anonymousEmail;
+    }
+
+    public String getAnonymousName() {
+        return this.anonymousName;
+    }
+
+    public EventSubscription anonymousName(String anonymousName) {
+        this.setAnonymousName(anonymousName);
+        return this;
+    }
+
+    public void setAnonymousName(String anonymousName) {
+        this.anonymousName = anonymousName;
     }
 
     public SubscriptionType getTypes() {
@@ -203,6 +237,8 @@ public class EventSubscription implements Serializable {
             "id=" + getId() +
             ", subscriptionDate='" + getSubscriptionDate() + "'" +
             ", isActive='" + getIsActive() + "'" +
+            ", anonymousEmail='" + getAnonymousEmail() + "'" +
+            ", anonymousName='" + getAnonymousName() + "'" +
             "}";
     }
 }

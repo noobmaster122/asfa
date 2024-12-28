@@ -53,10 +53,10 @@ describe('Product Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call EventSubscription query and add missing value', () => {
       const product: IProduct = { id: 456 };
-      const eventsubscriptions: IEventSubscription[] = [{ id: 2057 }];
+      const eventsubscriptions: IEventSubscription[] = [{ id: 21642 }];
       product.eventsubscriptions = eventsubscriptions;
 
-      const eventSubscriptionCollection: IEventSubscription[] = [{ id: 13518 }];
+      const eventSubscriptionCollection: IEventSubscription[] = [{ id: 902 }];
       jest.spyOn(eventSubscriptionService, 'query').mockReturnValue(of(new HttpResponse({ body: eventSubscriptionCollection })));
       const additionalEventSubscriptions = [...eventsubscriptions];
       const expectedCollection: IEventSubscription[] = [...additionalEventSubscriptions, ...eventSubscriptionCollection];
@@ -97,7 +97,7 @@ describe('Product Management Update Component', () => {
 
     it('Should update editForm', () => {
       const product: IProduct = { id: 456 };
-      const eventsubscription: IEventSubscription = { id: 17787 };
+      const eventsubscription: IEventSubscription = { id: 27105 };
       product.eventsubscriptions = [eventsubscription];
       const categories: ICategory = { id: 16805 };
       product.categories = categories;

@@ -1,11 +1,11 @@
-id;subscription_date;is_active
-1;2024-12-13;false
-2;2024-12-13;false
-3;2024-12-12;false
-4;2024-12-13;false
-5;2024-12-13;true
-6;2024-12-13;true
-7;2024-12-12;true
-8;2024-12-13;false
-9;2024-12-13;false
-10;2024-12-13;false
+id;subscription_date;is_active;anonymous_email;anonymous_name
+1;2024-12-13;false;cocorico spécialiste coac coac;diablement
+2;2024-12-12;false;pourpre transformer;sans que biathlète
+3;2024-12-12;false;afin de de crainte que neutre;membre titulaire secours envahir
+4;2024-12-12;true;étudier;coin-coin
+5;2024-12-12;true;coupable avant que;pendant que bon bang
+6;2024-12-12;true;cuicui du moment que;large partenaire
+7;2024-12-13;false;au-dessus de;selon solitaire derrière
+8;2024-12-13;true;connaître;croâ paf
+9;2024-12-12;false;quelquefois;athlète
+10;2024-12-13;true;sauf à;en decà de

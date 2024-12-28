@@ -23,6 +23,14 @@
           <dd>
             <span>{{ eventSubscriptionRef.isActive }}</span>
           </dd>
+          <dt><span>Anonymous Email</span></dt>
+          <dd>
+            <span>{{ eventSubscriptionRef.anonymousEmail }}</span>
+          </dd>
+          <dt><span>Anonymous Name</span></dt>
+          <dd>
+            <span>{{ eventSubscriptionRef.anonymousName }}</span>
+          </dd>
           <dt><span>Types</span></dt>
           <dd>
             @if (eventSubscription()!.types) {

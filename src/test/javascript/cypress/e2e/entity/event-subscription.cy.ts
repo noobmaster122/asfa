@@ -168,6 +168,12 @@ describe('EventSubscription e2e test', () => {
       cy.get(`[data-cy="isActive"]`).click();
       cy.get(`[data-cy="isActive"]`).should('be.checked');
 
+      cy.get(`[data-cy="anonymousEmail"]`).type('commettre longtemps');
+      cy.get(`[data-cy="anonymousEmail"]`).should('have.value', 'commettre longtemps');
+
+      cy.get(`[data-cy="anonymousName"]`).type('fourbe personnel professionnel trop');
+      cy.get(`[data-cy="anonymousName"]`).should('have.value', 'fourbe personnel professionnel trop');
+
       cy.get(entityCreateSaveButtonSelector).click();
 
       cy.wait('@postEntityRequest').then(({ response }) => {

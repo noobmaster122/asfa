@@ -20,6 +20,8 @@ type EventSubscriptionFormGroupContent = {
   id: FormControl<IEventSubscription['id'] | NewEventSubscription['id']>;
   subscriptionDate: FormControl<IEventSubscription['subscriptionDate']>;
   isActive: FormControl<IEventSubscription['isActive']>;
+  anonymousEmail: FormControl<IEventSubscription['anonymousEmail']>;
+  anonymousName: FormControl<IEventSubscription['anonymousName']>;
   types: FormControl<IEventSubscription['types']>;
   payment: FormControl<IEventSubscription['payment']>;
   members: FormControl<IEventSubscription['members']>;
@@ -48,6 +50,10 @@ export class EventSubscriptionFormService {
       }),
       isActive: new FormControl(eventSubscriptionRawValue.isActive, {
         validators: [Validators.required],
+      }),
+      anonymousEmail: new FormControl(eventSubscriptionRawValue.anonymousEmail),
+      anonymousName: new FormControl(eventSubscriptionRawValue.anonymousName, {
+        validators: [Validators.maxLength(80)],
       }),
       types: new FormControl(eventSubscriptionRawValue.types),
       payment: new FormControl(eventSubscriptionRawValue.payment),
