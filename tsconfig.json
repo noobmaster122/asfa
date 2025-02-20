@@ -12,6 +12,9 @@
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
+    "paths": {
+      "@angular/*": ["node_modules/@angular/*"]
+    },
     "importHelpers": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
