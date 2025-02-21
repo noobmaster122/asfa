@@ -74,12 +74,8 @@ export interface GarbageCollector {
   classesUnloaded: number;
 }
 
-export type Services = Record<
-  string,
-  {
-    [key in HttpMethod]?: MaxMeanCount;
-  }
->;
+type ServiceMetrics = Record<HttpMethod, MaxMeanCount | undefined>;
+export type Services = Record<string, ServiceMetrics>;
 
 export enum HttpMethod {
   Post = 'POST',
