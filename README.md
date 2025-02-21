@@ -37,6 +37,12 @@ To edit the `api.yml` definition file, you can use a tool such as [Swagger-Edito
 Refer to [Doing API-First development][] for more details.
 The build system will install automatically the recommended version of Node and npm.
 
+Before lanching angular app, you shoud adress to an issue with "colorette package".
+https://stackoverflow.com/questions/78943978/error-after-upgrading-angular-17-to-18-maximum-call-stack-error-by-colorette
+
+see this issue to understand it
+https://github.com/jorgebucaran/colorette/issues/104
+
 We provide a wrapper to launch npm.
 You will only need to run this command when dependencies change in [package.json](package.json).
 
