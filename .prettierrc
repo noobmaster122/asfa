@@ -1,4 +1,6 @@
+endOfLine: "lf"
 printWidth: 140
+trailingComma: "all"
 singleQuote: true
 tabWidth: 2
 useTabs: false

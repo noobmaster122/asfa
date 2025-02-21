@@ -74,21 +74,21 @@
     "@typescript-eslint/utils": "^6.0.0"
   },
   "dependencies": {
-    "@angular/common": "18.2.5",
-    "@angular/compiler": "18.2.5",
-    "@angular/core": "18.2.5",
-    "@angular/forms": "18.2.5",
-    "@angular/localize": "18.2.5",
-    "@angular/platform-browser": "^18.2.5",
-    "@angular/platform-browser-dynamic": "18.2.5",
-    "@angular/router": "^18.2.5",
+    "@angular/common": "18.2.13",
+    "@angular/compiler": "18.2.13",
+    "@angular/core": "18.2.13",
+    "@angular/forms": "18.2.13",
+    "@angular/localize": "18.2.13",
+    "@angular/platform-browser": "^18.2.13",
+    "@angular/platform-browser-dynamic": "18.2.13",
+    "@angular/router": "^18.2.13",
     "@fortawesome/angular-fontawesome": "0.15.0",
     "@fortawesome/fontawesome-svg-core": "6.6.0",
     "@fortawesome/free-solid-svg-icons": "6.6.0",
     "@ng-bootstrap/ng-bootstrap": "17.0.1",
     "@popperjs/core": "2.11.8",
     "bootstrap": "5.3.3",
-    "colorette": "2.0.19",
+    "colorette": "2.0.20",
     "dayjs": "1.11.13",
     "ngx-infinite-scroll": "18.0.0",
     "rxjs": "7.8.1",
@@ -100,9 +100,9 @@
     "@angular-builders/jest": "18.0.0",
     "@angular-devkit/build-angular": "^18.2.12",
     "@angular-eslint/eslint-plugin": "^19.1.0",
-    "@angular/cli": "18.2.5",
-    "@angular/compiler-cli": "18.2.5",
-    "@angular/service-worker": "18.2.5",
+    "@angular/cli": "18.2.13",
+    "@angular/compiler-cli": "18.2.13",
+    "@angular/service-worker": "18.2.13",
     "@types/jest": "29.5.13",
     "@types/node": "20.11.25",
     "@typescript-eslint/eslint-plugin": "^8.24.1",
@@ -147,6 +147,7 @@
   ],
   "overrides": {
     "browser-sync": "3.0.2",
-    "webpack": "5.94.0"
+    "webpack": "5.94.0",
+    "colorette": "2.0.20"
   }
 }

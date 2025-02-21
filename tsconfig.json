@@ -24,11 +24,7 @@
     "types": [],
     "lib": ["es2018", "es2020", "dom"]
   },
-  "references": [
-    {
-      "path": "tsconfig.spec.json"
-    }
-  ],
+  "references": [],
   "angularCompilerOptions": {
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
