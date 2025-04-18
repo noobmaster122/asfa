@@ -64,16 +64,7 @@ jobs:
           name: archiveTarget
           path: target/
 
-      - name: Cache dependencies
-        uses: actions/cache@v4.0.2
-        with:
-          path: |
-            ~/.sonar/cache  # You can adjust this based on what you're caching
-          key: ${{ runner.os }}-sonar-${{ hashFiles('**/sonar-project.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-sonar-
-
       - name: SonarQube Scan
-        uses: sonarsource/sonarcloud-github-action@v4
+        uses: sonarsource/sonarcloud-github-action@v3
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
